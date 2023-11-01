@@ -42,14 +42,17 @@ public struct InitTo: MemberMacro {
         guard [SwiftSyntax.SyntaxKind.classDecl, .structDecl].contains(declaration.kind) else {
             fatalError("type error")
         }
+        
         let (parameters, body) = initBodyAndParams(for: declaration)
-        let bodyExpr: ExprSyntax = "\(raw: body.joined(separator: "\n"))"
+        
         var parametersLiteral = "init(\(parameters.joined(separator: ", ")))"
-        if let modifiers = declaration.modifiers {
-            parametersLiteral = "\(modifiers)\(parametersLiteral)"
-        }
-        let initDecl = try InitializerDeclSyntax(PartialSyntaxNodeString(stringLiteral: parametersLiteral),bodyBuilder: { bodyExpr })
-     
+        
+        parametersLiteral = "\(declaration.modifiers)\(parametersLiteral)"
+
+        let bodyItem = CodeBlockItemListSyntax.init(stringLiteral: body.joined(separator: "\n"))
+        
+        let initDecl = try InitializerDeclSyntax(SyntaxNodeString(stringLiteral: parametersLiteral),bodyBuilder: { bodyItem })
+
         return [DeclSyntax(initDecl)]
     }
 

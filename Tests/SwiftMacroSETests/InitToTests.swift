@@ -25,6 +25,7 @@ final class InitToTests: XCTestCase {
             struct T {
                 let t1: Int?
                 let t2: Float
+            
                 init(t1: Int? = nil, t2: Float) {
                     self.t1 = t1
                     self.t2 = t2
@@ -50,6 +51,7 @@ final class InitToTests: XCTestCase {
             public class T {
                 let t1: Int?
                 let t2: String
+            
                 public init(t1: Int? = nil, t2: String) {
                     self.t1 = t1
                     self.t2 = t2
