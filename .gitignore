@@ -6,7 +6,5 @@ DerivedData/
 .swiftpm/configuration/registries.json
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
-<<<<<<< HEAD
+
 Package.resolved
-=======
->>>>>>> 513d1c5d1c336414e563b922931963d4720c33d7
